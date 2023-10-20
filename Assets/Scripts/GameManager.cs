@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor.Search;
+#endif 
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,7 +17,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject firstCard;
     public GameObject secondCard;
+    public GameObject ads;
 
+    public AudioClip matchSound;
+    AudioSource audioSource;
 
     public Text TimeText;
     public Text EndText;
@@ -35,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SpawnCards();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,6 +77,8 @@ public class GameManager : MonoBehaviour
     {
         if(firstCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name == secondCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name)
         {
+            audioSource.PlayOneShot(matchSound);
+
             firstCard.GetComponent<Card>().DestroyCard();
             secondCard.GetComponent<Card>().DestroyCard();
 
@@ -80,20 +88,22 @@ public class GameManager : MonoBehaviour
                 GameEnd();
             }
         }
-        else
-        {
-            firstCard.GetComponent<Card>().Close();
-            firstCard = null;
+        firstCard.GetComponent<Card>().Close();
+        firstCard = null;
 
-            secondCard.GetComponent<Card>().Close();
-            secondCard = null;
-        }
+        secondCard.GetComponent<Card>().Close();
+        secondCard = null;
     }
 
     void GameEnd()
     {
         EndText.gameObject.SetActive(true);
         Time.timeScale = 0.0f;
+    }
+
+    public void ShowAd()
+    {
+        ads.GetComponent<InterstitialAd>().ShowAd();
     }
 
     public void StartNewGame()

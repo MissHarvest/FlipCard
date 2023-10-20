@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public AudioClip flipSound;
+    
+    AudioSource audioSource;
+
     Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,7 +26,8 @@ public class Card : MonoBehaviour
 
     public void Touched()
     {
-        Debug.Log("TTT");
+        audioSource.PlayOneShot(flipSound);
+
         anim.SetBool("isOpen", true);
         transform.Find("Front").gameObject.SetActive(true);
         transform.Find("Back").gameObject.SetActive(false);
@@ -39,7 +45,7 @@ public class Card : MonoBehaviour
 
     public void DestroyCard()
     {
-        Invoke("DestroyCardInvoke", 1.0f);
+        Invoke("DestroyCardInvoke", 0.5f);
     }
 
     void DestroyCardInvoke()
@@ -49,7 +55,7 @@ public class Card : MonoBehaviour
 
     public void Close()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.5f);
     }
 
     void CloseCardInvoke()
