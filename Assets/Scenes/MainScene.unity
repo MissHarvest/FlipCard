@@ -156,6 +156,7 @@ MonoBehaviour:
   prefab_Card: {fileID: 2594340715547929480, guid: 3e7605590ed07aa4980d7e299be2f6a0, type: 3}
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
+  ads: {fileID: 1312905989}
   matchSound: {fileID: 8300000, guid: 652c69c798b354b4e92253dd11bfb8b9, type: 3}
   TimeText: {fileID: 1522216190}
   EndText: {fileID: 1963301744}
@@ -589,6 +590,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1312905989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312905991}
+  - component: {fileID: 1312905990}
+  - component: {fileID: 1312905992}
+  m_Layer: 0
+  m_Name: ads
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1312905990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312905989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576d27b9af045cd42a8687b48f0f2806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 5450934
+  _iOSGameId: 
+  _testMode: 1
+--- !u!4 &1312905991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312905989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.14304495, y: 0.7053393, z: 0.9298968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312905992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312905989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8193de1c8183564e8151398ddb6f92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidAdUnitId: Interstitial_Android
+  _iOsAdUnitId: Interstitial_iOS
 --- !u!1 &1433029550
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +933,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 126882}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartNewGame
+        m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -917,3 +980,4 @@ SceneRoots:
   - {fileID: 955002587}
   - {fileID: 126883}
   - {fileID: 300195435}
+  - {fileID: 1312905991}
